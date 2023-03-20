@@ -2,9 +2,7 @@ package game.baseball.rule;
 
 import java.util.regex.Pattern;
 
-import game.rule.GameRule;
-
-public enum BaseballGameRule implements GameRule<String> {
+public enum BaseballGameRule {
 
 	BASIC("^[1-9]*$", 3);
 
@@ -16,9 +14,11 @@ public enum BaseballGameRule implements GameRule<String> {
 		this.range = range;
 	}
 
-
-	@Override
 	public boolean isComplyWith(String param) {
 		return Pattern.matches(regex, param) && param.length() == range;
+	}
+
+	public int getRange() {
+		return this.range;
 	}
 }
