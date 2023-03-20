@@ -1,4 +1,4 @@
-package game.baseball;
+package game.baseball.domain;
 
 import game.baseball.contants.BaseballConstants;
 import game.baseball.message.BaseballGameMessage;
@@ -14,20 +14,27 @@ public class Baseball {
 	private String target;
 	private BaseballGameRule baseballGameRule;
 
-	private Baseball(String target, BaseballGameRule baseballGameRule) {
-		this.target = target;
+	private Baseball(BaseballGameRule baseballGameRule) {
+		this.target = createTarget();
 		this.baseballGameRule = baseballGameRule;
-
 	}
 
-	public static Baseball of(String target, BaseballGameRule baseballGameRule) {
-		return new Baseball(target, baseballGameRule);
+	public static Baseball of(BaseballGameRule baseballGameRule) {
+		return new Baseball(baseballGameRule);
 	}
 
-	private static void validate(String input, BaseballGameRule gameRule) {
-		boolean isComplyWith = gameRule.isComplyWith(input);
-		if (!isComplyWith) {
-			throw new IllegalArgumentException("입력 값이 적절하지 않습니다.");
+	private String createTarget() {
+		StringBuilder targetBuffer = new StringBuilder();
+		while (targetBuffer.length() < 3) {
+			randomNumberAppend(targetBuffer);
+		}
+		return targetBuffer.toString();
+	}
+
+	private static void randomNumberAppend(StringBuilder targetBuffer) {
+		int value = (int) (Math.random() * 9) + 1;
+		if (targetBuffer.indexOf(String.valueOf(value)) < 0) {
+			targetBuffer.append(value);
 		}
 	}
 
@@ -35,6 +42,13 @@ public class Baseball {
 		validate(input, baseballGameRule);
 		reset(input);
 		gameStrategy.judge(this);
+	}
+
+	private static void validate(String input, BaseballGameRule gameRule) {
+		boolean isComplyWith = gameRule.isComplyWith(input);
+		if (!isComplyWith) {
+			throw new IllegalArgumentException("입력 값이 적절하지 않습니다.");
+		}
 	}
 
 	public boolean toBeContinue(String input) {
@@ -67,10 +81,10 @@ public class Baseball {
 	}
 
 	public void threeStrikeOut() {
-		this.strike = 3;
+		this.strike = baseballGameRule.getRange();
 	}
 
-	public boolean isOut() {
+	public boolean isEnd() {
 		return this.strike == baseballGameRule.getRange();
 	}
 

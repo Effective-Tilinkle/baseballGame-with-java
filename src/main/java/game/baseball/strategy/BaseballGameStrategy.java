@@ -1,6 +1,6 @@
-package game.baseball;
+package game.baseball.strategy;
 
-import game.baseball.strategy.GameStrategy;
+import game.baseball.domain.Baseball;
 
 public class BaseballGameStrategy implements GameStrategy<Baseball, Baseball> {
 
