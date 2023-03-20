@@ -45,7 +45,7 @@ public class Baseball {
 	public void start(String input, GameStrategy gameStrategy) {
 		validate(input, baseballGameRule);
 		reset(input);
-		gameStrategy.judge(this);
+		gameStrategy.judge();
 	}
 
 	private void validate(String input, BaseballGameRule gameRule) {

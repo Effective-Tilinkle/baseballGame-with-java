@@ -14,7 +14,7 @@ public class Main {
 		Baseball baseball = Baseball.of(BaseballGameRule.BASIC);
 
 		while (baseball.isContinue()) {
-			baseball.start(InputView.input(BaseballGameMessage.INPUT_THE_NUMBER), new BaseballGameStrategy());
+			baseball.start(InputView.input(BaseballGameMessage.INPUT_THE_NUMBER), BaseballGameStrategy.from(baseball));
 			ResultView.print(baseball);
 			baseball.checkStrike();
 		}
