@@ -2,17 +2,26 @@ package game.baseball.strategy;
 
 import game.baseball.domain.Baseball;
 
-public class BaseballGameStrategy implements GameStrategy<Baseball, Baseball> {
+public class BaseballGameStrategy implements GameStrategy {
+
+	private Baseball baseball;
+	private BaseballGameStrategy(Baseball baseball) {
+		this.baseball = baseball;
+	}
+
+	public static BaseballGameStrategy from(Baseball baseball) {
+		return new BaseballGameStrategy(baseball);
+	}
 
 	@Override
-	public Baseball judge(Baseball baseball) {
+	public void judge() {
 
 		String input = baseball.getInput();
 		String target = baseball.getTarget();
 
 		if (input.equals(target)) {
 			baseball.threeStrikeOut();
-			return baseball;
+			return;
 		}
 
 		for (char ch : input.toCharArray()) {
@@ -20,8 +29,6 @@ public class BaseballGameStrategy implements GameStrategy<Baseball, Baseball> {
 			int targetCharPosition = target.indexOf(ch);
 			compare(inputCharPosition, targetCharPosition, baseball);
 		}
-
-		return baseball;
 	}
 
 	private void compare(int inputCharPosition, int targetCharPosition, Baseball baseball) {
