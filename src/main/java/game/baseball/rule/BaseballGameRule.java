@@ -2,7 +2,6 @@ package game.baseball.rule;
 
 import java.util.HashMap;
 import java.util.regex.Pattern;
-import java.util.stream.Stream;
 
 public enum BaseballGameRule {
 

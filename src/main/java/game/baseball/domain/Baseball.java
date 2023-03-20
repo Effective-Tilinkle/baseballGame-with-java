@@ -11,15 +11,15 @@ public class Baseball {
 	private int strike;
 	private int ball;
 
-	private String input;
-	private String target;
 	private BaseballGameRule baseballGameRule;
 	private BaseballConstants baseballConstants;
+	private String input;
+	private String target;
 
 	private Baseball(BaseballGameRule baseballGameRule) {
-		this.target = createTarget();
 		this.baseballGameRule = baseballGameRule;
 		this.baseballConstants = BaseballConstants.CONTINUE;
+		this.target = createTarget();
 	}
 
 	public static Baseball of(BaseballGameRule baseballGameRule) {
@@ -35,7 +35,7 @@ public class Baseball {
 		return targetBuffer.toString();
 	}
 
-	private static void randomNumberAppend(StringBuilder targetBuffer) {
+	private void randomNumberAppend(StringBuilder targetBuffer) {
 		int value = (int) (Math.random() * 9) + 1;
 		if (targetBuffer.indexOf(String.valueOf(value)) < 0) {
 			targetBuffer.append(value);
@@ -48,7 +48,7 @@ public class Baseball {
 		gameStrategy.judge(this);
 	}
 
-	private static void validate(String input, BaseballGameRule gameRule) {
+	private void validate(String input, BaseballGameRule gameRule) {
 		boolean isComplyWith = gameRule.isComplyWith(input);
 		if (!isComplyWith) {
 			throw new IllegalArgumentException("입력 값이 적절하지 않습니다.");
