@@ -11,7 +11,7 @@ public class Main {
 
 	public static void main(String[] args){
 
-		Baseball baseball = Baseball.of(BaseballGameRule.BASIC);
+		Baseball baseball = Baseball.from(BaseballGameRule.BASIC);
 
 		while (baseball.isContinue()) {
 			baseball.start(InputView.input(BaseballGameMessage.INPUT_THE_NUMBER), BaseballGameStrategy.from(baseball));

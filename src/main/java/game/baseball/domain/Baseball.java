@@ -22,7 +22,7 @@ public class Baseball {
 		this.target = createTarget();
 	}
 
-	public static Baseball of(BaseballGameRule baseballGameRule) {
+	public static Baseball from(BaseballGameRule baseballGameRule) {
 		return new Baseball(baseballGameRule);
 	}
 
@@ -31,7 +31,6 @@ public class Baseball {
 		while (targetBuffer.length() < baseballGameRule.getRange()) {
 			randomNumberAppend(targetBuffer);
 		}
-		System.out.println("hidden string : " + targetBuffer.toString());
 		return targetBuffer.toString();
 	}
 
