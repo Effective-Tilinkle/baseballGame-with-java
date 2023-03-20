@@ -45,6 +45,6 @@ public class BaseballGameStrategy implements GameStrategy {
 		}
 
 		baseball.plusBall();
-		return;
+
 	}
 }
