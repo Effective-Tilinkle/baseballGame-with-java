@@ -9,17 +9,14 @@ import game.baseball.view.ResultView;
 
 public class Main {
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args){
 
 		Baseball baseball = Baseball.of(BaseballGameRule.BASIC);
 
-		while (true) {
+		while (baseball.isContinue()) {
 			baseball.start(InputView.input(BaseballGameMessage.INPUT_THE_NUMBER), new BaseballGameStrategy());
 			ResultView.print(baseball);
-
-			if (baseball.isEnd() && !baseball.toBeContinue(InputView.input(BaseballGameMessage.CONTINUE))) {
-				break;
-			}
+			baseball.checkStrike();
 		}
 	}
 }

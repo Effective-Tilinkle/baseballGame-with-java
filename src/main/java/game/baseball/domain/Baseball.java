@@ -4,6 +4,7 @@ import game.baseball.contants.BaseballConstants;
 import game.baseball.message.BaseballGameMessage;
 import game.baseball.rule.BaseballGameRule;
 import game.baseball.strategy.GameStrategy;
+import game.baseball.view.InputView;
 
 public class Baseball {
 
@@ -13,10 +14,12 @@ public class Baseball {
 	private String input;
 	private String target;
 	private BaseballGameRule baseballGameRule;
+	private BaseballConstants baseballConstants;
 
 	private Baseball(BaseballGameRule baseballGameRule) {
 		this.target = createTarget();
 		this.baseballGameRule = baseballGameRule;
+		this.baseballConstants = BaseballConstants.CONTINUE;
 	}
 
 	public static Baseball of(BaseballGameRule baseballGameRule) {
@@ -25,9 +28,10 @@ public class Baseball {
 
 	private String createTarget() {
 		StringBuilder targetBuffer = new StringBuilder();
-		while (targetBuffer.length() < 3) {
+		while (targetBuffer.length() < baseballGameRule.getRange()) {
 			randomNumberAppend(targetBuffer);
 		}
+		System.out.println("hidden string : " + targetBuffer.toString());
 		return targetBuffer.toString();
 	}
 
@@ -49,13 +53,6 @@ public class Baseball {
 		if (!isComplyWith) {
 			throw new IllegalArgumentException("입력 값이 적절하지 않습니다.");
 		}
-	}
-
-	public boolean toBeContinue(String input) {
-		if (BaseballConstants.CONTINUE.is(input)) {
-			return true;
-		}
-		return false;
 	}
 
 	private void reset(String input) {
@@ -84,9 +81,25 @@ public class Baseball {
 		this.strike = baseballGameRule.getRange();
 	}
 
-	public boolean isEnd() {
+	public void checkStrike() {
+		if(isStrikeOut()) {
+			changeStatusAs(InputView.input(BaseballGameMessage.CONTINUE));
+		}
+	}
+	private boolean isStrikeOut() {
 		return this.strike == baseballGameRule.getRange();
 	}
+
+	private void changeStatusAs(String input){
+		this.baseballConstants = BaseballConstants.getFromValue(input);
+		this.target = createTarget();
+	}
+
+	public boolean isContinue() {
+		return this.baseballConstants == BaseballConstants.CONTINUE;
+	}
+
+
 
 	@Override
 	public String toString() {
