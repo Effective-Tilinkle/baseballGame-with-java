@@ -24,7 +24,7 @@ public class BallNumbers {
 
     private static List<BallNumber> toBallNumbers(List<Integer> inputNumbers) {
         return inputNumbers.stream()
-                .map(number -> BallNumber.from(number))
+                .map(BallNumber::from)
                 .collect(toList());
     }
 
