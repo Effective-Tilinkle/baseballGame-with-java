@@ -1,9 +1,14 @@
 package baseball;
 
 import baseball.application.BaseballGame;
+import baseball.view.InputView;
 
 public class Application {
     public static void main(String[] args) {
-        new BaseballGame().play();
+        int coin = 1;
+        while(coin == 1) {
+            new BaseballGame().play();
+            coin = InputView.enterTryAgain();
+        }
     }
 }
