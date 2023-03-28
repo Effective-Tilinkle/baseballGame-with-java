@@ -5,10 +5,10 @@ import baseball.view.InputView;
 
 public class Application {
     public static void main(String[] args) {
-        int coin = 1;
-        while(coin == 1) {
+        int credit = 1;
+        while(credit == 1) {
             new BaseballGame().play();
-            coin = InputView.enterTryAgain();
+            credit = InputView.enterTryAgain();
         }
     }
 }

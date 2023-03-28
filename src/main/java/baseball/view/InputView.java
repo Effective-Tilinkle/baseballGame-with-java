@@ -11,8 +11,7 @@ public class InputView {
     private static final String DELIMITER = "";
     private static final Scanner scanner = new Scanner(System.in);
 
-    private InputView() {
-    }
+    private InputView() { }
 
     public static List<Integer> enterNumber() {
         System.out.println(ENTER_NUMBER_MESSAGE);
