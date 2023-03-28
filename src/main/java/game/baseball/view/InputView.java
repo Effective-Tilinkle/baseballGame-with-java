@@ -8,8 +8,8 @@ public class InputView {
 
 	private static Scanner scanner = new Scanner(System.in);
 
-	public static String input(BaseballGameMessage baseballGameMessage) {
-		System.out.print(baseballGameMessage.getSentence());
-		return scanner.nextLine();
+	public static int input() {
+		System.out.print("숫자를 입력해주세요 : ");
+		return Integer.parseInt(scanner.nextLine());
 	}
 }
