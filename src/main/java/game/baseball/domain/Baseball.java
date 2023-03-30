@@ -29,6 +29,10 @@ public class Baseball {
 
 	private void validate(List<Integer> baseballNos) {
 
+		if(baseballNos.contains(0)) {
+			throw new IllegalArgumentException("Invalid number contained");
+		}
+
 		if (baseballNos.size() > BaseballConstants.NO_LENGTH_LIMIT) {
 			throw new IllegalArgumentException("Too many baseball no exist");
 		}

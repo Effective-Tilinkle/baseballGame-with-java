@@ -41,4 +41,15 @@ class BaseballTest {
 
 		assertEquals("Too many baseball no exist", exception.getMessage());
 	}
+
+	@DisplayName("잘못된 값이 입력되면 예외를 발생 시킨다")
+	@Test
+	void invalidNoContainTest() {
+
+		IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+			Baseball.from(Arrays.asList(3, 0, 5));
+		});
+
+		assertEquals("Invalid number contained", exception.getMessage());
+	}
 }
