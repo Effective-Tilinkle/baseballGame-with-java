@@ -12,7 +12,7 @@ public class InputView {
 	private static Scanner scanner = new Scanner(System.in);
 
 	public static int inputNo() {
-		System.out.print(BaseballGameMessage.INPUT_THE_baseballNo.getSentence());
+		System.out.print(BaseballGameMessage.INPUT_THE_NUMBER.getSentence());
 		return Integer.parseInt(scanner.nextLine());
 	}
 
