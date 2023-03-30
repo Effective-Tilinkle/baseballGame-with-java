@@ -11,11 +11,11 @@ public class Baseball {
 	private List<Integer> baseballNos;
 
 	private Baseball(List<Integer> baseballNos) {
-		validate(baseballNos);
 		this.baseballNos = baseballNos;
 	}
 
 	public static Baseball from(List<Integer> baseballNos) {
+		validate(baseballNos);
 		return new Baseball(Collections.unmodifiableList(baseballNos));
 	}
 
@@ -27,7 +27,7 @@ public class Baseball {
 		return this.baseballNos.indexOf(no);
 	}
 
-	private void validate(List<Integer> baseballNos) {
+	private static void validate(List<Integer> baseballNos) {
 
 		if(baseballNos.contains(0)) {
 			throw new IllegalArgumentException("Invalid number contained");
