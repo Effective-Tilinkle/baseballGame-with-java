@@ -55,12 +55,16 @@ public class GameService {
 			List<Integer> baseballNos = new ArrayList();
 			while (baseballNos.size() < BaseballConstants.NO_LENGTH_LIMIT) {
 				int baseballNo = (int) ((Math.random() * 9) + 1);
-				if (!baseballNos.contains(baseballNo)) {
-					baseballNos.add(baseballNo);
-				}
+				addToBaseballNosIfNotExist(baseballNos, baseballNo);
 			}
 			return baseballNos;
 		};
+	}
+
+	private void addToBaseballNosIfNotExist(List<Integer> baseballNos, int baseballNo) {
+		if (!baseballNos.contains(baseballNo)) {
+			baseballNos.add(baseballNo);
+		}
 	}
 
 	private void goingToKeepGoing(GameResult gameResult) {
