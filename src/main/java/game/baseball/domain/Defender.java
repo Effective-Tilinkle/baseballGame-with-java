@@ -14,7 +14,7 @@ public class Defender {
 	}
 
 	public static Defender from(BaseballNoGenerator baseballNoGenerator) {
-		return new Defender((List) baseballNoGenerator.generate());
+		return new Defender(baseballNoGenerator.generate());
 	}
 
 	public Baseball getDefenceNos() {

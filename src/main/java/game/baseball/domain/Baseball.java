@@ -23,12 +23,6 @@ public class Baseball {
 		return this.baseballNos.contains(no);
 	}
 
-	/**
-	 * 없는 번호인 경우, -1을 return한다.
-	 *
-	 * @param no
-	 * @return
-	 */
 	public int getPosition(int no) {
 		return this.baseballNos.indexOf(no);
 	}

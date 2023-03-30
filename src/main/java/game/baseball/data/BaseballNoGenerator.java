@@ -1,7 +1,9 @@
 package game.baseball.data;
 
-@FunctionalInterface
-public interface BaseballNoGenerator<R> {
+import java.util.List;
 
-	R generate();
+@FunctionalInterface
+public interface BaseballNoGenerator {
+
+	List<Integer> generate();
 }
