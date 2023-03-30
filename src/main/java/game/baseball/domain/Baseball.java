@@ -1,6 +1,7 @@
 package game.baseball.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -15,6 +16,7 @@ public class Baseball {
 	}
 
 	private Baseball(List<Integer> baseballNos) {
+		validate(baseballNos);
 		this.baseballNos = baseballNos;
 	}
 
@@ -23,7 +25,7 @@ public class Baseball {
 	}
 
 	public static Baseball from(List<Integer> baseballNos) {
-		return new Baseball(baseballNos);
+		return new Baseball(Collections.unmodifiableList(baseballNos));
 	}
 
 	public boolean contains(int no) {
@@ -40,15 +42,16 @@ public class Baseball {
 		return this.baseballNos.indexOf(no);
 	}
 
-	public void addNo(int no) {
-		if (baseballNos.contains(no) || baseballNos.size() >= BaseballConstants.NO_LENGTH_LIMIT) {
-			throw new IllegalArgumentException("Invalid baseball baseballNo");
-		}
-		this.baseballNos.add(0, no);
-	}
+	private void validate(List<Integer> baseballNos) {
 
-	public void clear() {
-		this.baseballNos.clear();
+		if (baseballNos.size() > BaseballConstants.NO_LENGTH_LIMIT) {
+			throw new IllegalArgumentException("Too many baseball no exist");
+		}
+
+		if (baseballNos.stream().distinct().count() != baseballNos.size()) {
+			throw new IllegalArgumentException("Duplicate number detected");
+		}
+
 	}
 
 	public Stream<Integer> getNos() {

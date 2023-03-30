@@ -1,5 +1,8 @@
 package game.baseball.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Attacker {
 
 	private Baseball attackBall;
@@ -13,13 +16,13 @@ public class Attacker {
 	}
 
 	public void shoot(int baseballNos) {
-		attackBall.clear();
-
+		List<Integer> list = new ArrayList<>();
 		while (baseballNos > 0) {
 			int no = baseballNos % 10;
-			this.attackBall.addNo(no);
+			list.add(0, no);
 			baseballNos /= 10;
 		}
+		attackBall = Baseball.from(list);
 	}
 
 	public Baseball getAttackNos() {
