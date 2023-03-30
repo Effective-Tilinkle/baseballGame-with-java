@@ -1,5 +1,6 @@
 package game.baseball.view;
 
+import game.baseball.constant.BaseballConstants;
 import game.baseball.domain.GameResult;
 import game.baseball.message.BaseballGameMessage;
 
@@ -11,7 +12,7 @@ public class ResultView {
 		if (gameResult.getStrike() > 0) {
 			message.append(BaseballGameMessage.STRIKE.getSentence(gameResult.getStrike()));
 		}
-		if (gameResult.getStrike() == 3) {
+		if (gameResult.getStrike() == BaseballConstants.NO_LENGTH_LIMIT) {
 			message.append(System.lineSeparator()).append(BaseballGameMessage.FIN.getSentence(gameResult.getStrike()));
 		}
 		if (gameResult.getBall() > 0) {

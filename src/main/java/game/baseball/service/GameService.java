@@ -3,6 +3,7 @@ package game.baseball.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import game.baseball.constant.BaseballConstants;
 import game.baseball.data.BaseballNoGenerator;
 import game.baseball.domain.Attacker;
 import game.baseball.domain.BaseballGame;
@@ -19,8 +20,6 @@ public class GameService {
 	private Attacker attacker;
 	private Defender defender;
 	private Umpire umpire;
-
-	private final int NO_LENGTH_LIMIT = 3;
 
 	private GameService(BaseballGame baseballGame) {
 		this.baseballGame = baseballGame;
@@ -54,7 +53,7 @@ public class GameService {
 	private BaseballNoGenerator generateNo() {
 		return () -> {
 			List<Integer> baseballNos = new ArrayList();
-			while (baseballNos.size() < NO_LENGTH_LIMIT) {
+			while (baseballNos.size() < BaseballConstants.NO_LENGTH_LIMIT) {
 				int baseballNo = (int) ((Math.random() * 9) + 1);
 				if (!baseballNos.contains(baseballNo)) {
 					baseballNos.add(baseballNo);
@@ -65,7 +64,7 @@ public class GameService {
 	}
 
 	private void goingToKeepGoing(GameResult gameResult) {
-		if (gameResult.isOut(NO_LENGTH_LIMIT)) {
+		if (gameResult.isOut(BaseballConstants.NO_LENGTH_LIMIT)) {
 			baseballGame.keepGoing(InputView.inputWhetherToContinue());
 			initializePlayer();
 		}

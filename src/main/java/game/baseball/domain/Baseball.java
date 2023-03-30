@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+import game.baseball.constant.BaseballConstants;
+
 public class Baseball {
 
 	private List<Integer> baseballNos;
@@ -39,7 +41,7 @@ public class Baseball {
 	}
 
 	public void addNo(int no) {
-		if (baseballNos.contains(no)) {
+		if (baseballNos.contains(no) || baseballNos.size() >= BaseballConstants.NO_LENGTH_LIMIT) {
 			throw new IllegalArgumentException("Invalid baseball baseballNo");
 		}
 		this.baseballNos.add(0, no);

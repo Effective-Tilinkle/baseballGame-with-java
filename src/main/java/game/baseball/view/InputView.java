@@ -7,7 +7,6 @@ import game.baseball.message.BaseballGameMessage;
 public class InputView {
 
 	private static final int CONTINUE = 1;
-	private static final int EXIT = 2;
 
 	private static Scanner scanner = new Scanner(System.in);
 
