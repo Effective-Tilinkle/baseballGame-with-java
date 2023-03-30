@@ -8,7 +8,6 @@ public class Attacker {
 	private Baseball attackBall;
 
 	private Attacker() {
-		this.attackBall = Baseball.init();
 	}
 
 	public static Attacker init() {

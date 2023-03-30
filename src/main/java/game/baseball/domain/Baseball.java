@@ -1,6 +1,5 @@
 package game.baseball.domain;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
@@ -11,17 +10,9 @@ public class Baseball {
 
 	private List<Integer> baseballNos;
 
-	private Baseball() {
-		this.baseballNos = new ArrayList<>();
-	}
-
 	private Baseball(List<Integer> baseballNos) {
 		validate(baseballNos);
 		this.baseballNos = baseballNos;
-	}
-
-	public static Baseball init() {
-		return new Baseball();
 	}
 
 	public static Baseball from(List<Integer> baseballNos) {
