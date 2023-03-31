@@ -3,7 +3,7 @@ package game.baseball.data;
 import java.util.List;
 
 @FunctionalInterface
-public interface BaseballNoGenerator {
+public interface NumberGenerator {
 
 	List<Integer> generate();
 }

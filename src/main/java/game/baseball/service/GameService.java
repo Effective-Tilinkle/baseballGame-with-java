@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import game.baseball.constant.BaseballConstants;
-import game.baseball.data.BaseballNoGenerator;
+import game.baseball.data.NumberGenerator;
 import game.baseball.domain.Attacker;
 import game.baseball.domain.BaseballGame;
 import game.baseball.domain.Defender;
@@ -50,7 +50,7 @@ public class GameService {
 		this.umpire = Umpire.init();
 	}
 
-	private BaseballNoGenerator generateNo() {
+	private NumberGenerator generateNo() {
 		return () -> {
 			List<Integer> baseballNos = new ArrayList();
 			while (baseballNos.size() < BaseballConstants.NO_LENGTH_LIMIT) {

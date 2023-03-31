@@ -3,7 +3,7 @@ package game.baseball.domain;
 
 import java.util.List;
 
-import game.baseball.data.BaseballNoGenerator;
+import game.baseball.data.NumberGenerator;
 
 public class Defender {
 
@@ -13,8 +13,8 @@ public class Defender {
 		this.defenceBall = Baseball.from(baseballNos);
 	}
 
-	public static Defender from(BaseballNoGenerator baseballNoGenerator) {
-		return new Defender(baseballNoGenerator.generate());
+	public static Defender from(NumberGenerator numberGenerator) {
+		return new Defender(numberGenerator.generate());
 	}
 
 	public Baseball getDefenceNos() {
