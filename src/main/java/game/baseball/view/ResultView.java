@@ -9,16 +9,16 @@ public class ResultView {
 	public static void print(GameResult gameResult) {
 
 		StringBuilder message = new StringBuilder();
-		if (gameResult.getStrike() > 0) {
+		if (gameResult.hasStrike()) {
 			message.append(BaseballGameMessage.STRIKE.getSentence(gameResult.getStrike()));
 		}
-		if (gameResult.getStrike() == BaseballConstants.NO_LENGTH_LIMIT) {
+		if (gameResult.isOut(BaseballConstants.NO_LENGTH_LIMIT)) {
 			message.append(System.lineSeparator()).append(BaseballGameMessage.FIN.getSentence(gameResult.getStrike()));
 		}
-		if (gameResult.getBall() > 0) {
+		if (gameResult.hasBall()) {
 			message.append(BaseballGameMessage.BALL.getSentence(gameResult.getBall()));
 		}
-		if (gameResult.getStrike() == 0 && gameResult.getBall() == 0) {
+		if (gameResult.hasNothing()) {
 			message.append(BaseballGameMessage.NOTHING.getSentence());
 		}
 		System.out.println(message);

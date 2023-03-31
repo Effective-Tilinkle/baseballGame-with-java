@@ -31,4 +31,17 @@ public class GameResult {
 	public boolean isOut(int baseballNoCount) {
 		return this.strike == baseballNoCount;
 	}
+
+	public boolean hasStrike(){
+		return this.strike > 0;
+	}
+
+	public boolean hasBall(){
+		return this.ball > 0;
+	}
+
+	public boolean hasNothing() {
+		return this.strike == 0 && this.ball == 0;
+	}
+
 }
