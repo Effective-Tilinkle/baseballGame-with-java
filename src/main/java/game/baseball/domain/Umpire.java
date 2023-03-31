@@ -31,10 +31,7 @@ public class Umpire {
 	}
 
 	private boolean comparePosition(int defenceNoPosition, int attackNoPosition) {
-		if (defenceNoPosition == attackNoPosition) {
-			return true;
-		}
-		return false;
+		return defenceNoPosition == attackNoPosition;
 	}
 
 	private void updateGameStatus(boolean compareResult) {
