@@ -29,7 +29,7 @@ public class Baseball {
 
 	private static void validate(List<Integer> baseballNos) {
 
-		if(baseballNos.contains(0)) {
+		if (baseballNos.contains(0)) {
 			throw new IllegalArgumentException("Invalid number contained");
 		}
 
@@ -37,10 +37,14 @@ public class Baseball {
 			throw new IllegalArgumentException("Too many baseball no exist");
 		}
 
-		if (baseballNos.stream().distinct().count() != baseballNos.size()) {
+		if (isExistDuplicateNo(baseballNos)) {
 			throw new IllegalArgumentException("Duplicate number detected");
 		}
 
+	}
+
+	private static boolean isExistDuplicateNo(List<Integer> baseballNos) {
+		return baseballNos.stream().distinct().count() != baseballNos.size();
 	}
 
 	public Stream<Integer> getNos() {
