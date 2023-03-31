@@ -12,7 +12,7 @@ class AttackerTest {
 	@Test
 	void shootTest() {
 		Attacker attacker = Attacker.init();
-		attacker.shoot(123);
+		attacker.shoot("123");
 
 		assertEquals(0, attacker.getAttackNos().getPosition(1));
 		assertEquals(1, attacker.getAttackNos().getPosition(2));

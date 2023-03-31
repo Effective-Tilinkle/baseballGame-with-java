@@ -1,6 +1,7 @@
 package game.baseball.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Attacker {
@@ -14,13 +15,12 @@ public class Attacker {
 		return new Attacker();
 	}
 
-	public void shoot(int baseballNos) {
+	public void shoot(String baseballNos) {
 		List<Integer> list = new ArrayList<>();
-		while (baseballNos > 0) {
-			int no = baseballNos % 10;
-			list.add(0, no);
-			baseballNos /= 10;
-		}
+
+		Arrays.stream(baseballNos.split("")).forEach(no -> {
+			list.add(Integer.parseInt(no));
+		});
 		attackBall = Baseball.from(list);
 	}
 
