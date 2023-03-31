@@ -1,8 +1,8 @@
 package game.baseball.domain;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Attacker {
 
@@ -16,11 +16,11 @@ public class Attacker {
 	}
 
 	public void shoot(String baseballNos) {
-		List<Integer> list = new ArrayList<>();
 
-		Arrays.stream(baseballNos.split("")).forEach(no -> {
-			list.add(Integer.parseInt(no));
-		});
+		List<Integer> list = Arrays.stream(baseballNos.split(""))
+								   .map(no -> Integer.parseInt(no))
+								   .collect(Collectors.toList());
+
 		attackBall = Baseball.from(list);
 	}
 
