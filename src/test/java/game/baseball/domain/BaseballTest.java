@@ -1,7 +1,7 @@
 package game.baseball.domain;
 
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 
@@ -24,32 +24,38 @@ class BaseballTest {
 	@Test
 	void addNoDuplicateTest() {
 
-		IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-			Baseball.from(Arrays.asList(2, 2, 4));
-		});
+		assertThatIllegalArgumentException()
+				.isThrownBy(() -> Baseball.from(Arrays.asList(2, 2, 4)))
+				.withMessage("Duplicate number detected");
 
-		assertEquals("Duplicate number detected", exception.getMessage());
 	}
 
 	@DisplayName("초과된 갯수의 값이 입력되면 예외를 발생 시킨다")
 	@Test
 	void addNoExceedTest() {
 
-		IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-			Baseball.from(Arrays.asList(2, 3, 4, 5));
-		});
-
-		assertEquals("Too many baseball no exist", exception.getMessage());
+		assertThatIllegalArgumentException()
+				.isThrownBy(() -> Baseball.from(Arrays.asList(2, 3, 4, 5)))
+				.withMessage("Invalid length no");
 	}
+
+	@DisplayName("초과된 갯수의 값이 입력되면 예외를 발생 시킨다")
+	@Test
+	void shotLengthNoTest() {
+
+		assertThatIllegalArgumentException()
+				.isThrownBy(() -> Baseball.from(Arrays.asList(2, 3)))
+				.withMessage("Invalid length no");
+	}
+
 
 	@DisplayName("잘못된 값이 입력되면 예외를 발생 시킨다")
 	@Test
 	void invalidNoContainTest() {
 
-		IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-			Baseball.from(Arrays.asList(3, 0, 5));
-		});
+		assertThatIllegalArgumentException()
+				.isThrownBy(() -> Baseball.from(Arrays.asList(3, 0, 5)))
+				.withMessage("Invalid number contained");
 
-		assertEquals("Invalid number contained", exception.getMessage());
 	}
 }
