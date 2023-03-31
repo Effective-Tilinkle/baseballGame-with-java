@@ -33,14 +33,18 @@ public class Baseball {
 			throw new IllegalArgumentException("Invalid number contained");
 		}
 
-		if (baseballNos.size() > BaseballConstants.NO_LENGTH_LIMIT) {
-			throw new IllegalArgumentException("Too many baseball no exist");
+		if (isExistWrongLenth(baseballNos)) {
+			throw new IllegalArgumentException("Invalid length no");
 		}
 
 		if (isExistDuplicateNo(baseballNos)) {
 			throw new IllegalArgumentException("Duplicate number detected");
 		}
 
+	}
+
+	private static boolean isExistWrongLenth(List<Integer> baseballNos){
+		return baseballNos.size() != BaseballConstants.NO_LENGTH_LIMIT;
 	}
 
 	private static boolean isExistDuplicateNo(List<Integer> baseballNos) {
